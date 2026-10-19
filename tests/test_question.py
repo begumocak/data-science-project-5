@@ -22,6 +22,13 @@ from data.question import (
 
 
 # Q1: NULL emailleri 'unknown@example.com' ile değiştir (UPDATE)
+# ─────────────────────────────────────────────
+# Kaizu ID'n — Profile → Settings → User ID
+# Skorunun Kaizu'ya gitmesi için 0 yerine kendi ID'ni yaz.
+# ─────────────────────────────────────────────
+USER_ID = 0  # ← BURAYI DEĞİŞTİR
+
+
 def test_clean_null_emails():
     assert clean_null_emails() is None
 
@@ -172,9 +179,13 @@ def run_tests():
     user_score = round((collector.passed / total) * 100, 2)
     print(f"Skor: {user_score}")
 
+    if USER_ID == 0:
+        print("\n⚠️  USER_ID=0 — tests/test_question.py dosyasının başına kendi Kaizu ID'ni yazmadın, skor gönderilmeyecek.")
+        return
+
     url = "https://kaizu-api-8cd10af40cb3.herokuapp.com/projectLog"
     payload = {
-        "user_id": 34,
+        "user_id": USER_ID,
         "project_id": 38,
         "user_score": user_score,
         "is_auto": False

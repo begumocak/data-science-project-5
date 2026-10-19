@@ -9,6 +9,9 @@ conn = psycopg2.connect(
 )
 cur = conn.cursor()
 
+# Önceki çalıştırmalardan / diğer projelerden kalan tabloları temizle
+cur.execute("DROP TABLE IF EXISTS customers, orders, products CASCADE;")
+
 cur.execute("""
 CREATE TABLE IF NOT EXISTS customers (
     customer_id SERIAL PRIMARY KEY,
