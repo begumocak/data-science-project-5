@@ -26,7 +26,7 @@ from data.question import (
 # Kaizu ID'n — Profile → Settings → User ID
 # Skorunun Kaizu'ya gitmesi için 0 yerine kendi ID'ni yaz.
 # ─────────────────────────────────────────────
-USER_ID = 0  # ← BURAYI DEĞİŞTİR
+USER_ID = 864 # ← BURAYI DEĞİŞTİR
 
 
 def test_clean_null_emails():
